@@ -2,37 +2,16 @@
 import pyautogui
 import time
 import ctypes
+from appCheck import *
 
 # Report completion image
 runComplete = pyautogui.locateOnScreen('Capture.png', grayscale=True)
 
 # Determin if QAD application is open
-def appIsOpenCheck():
-    EnumWindows = ctypes.windll.user32.EnumWindows
-    EnumWindowsProc = ctypes.WINFUNCTYPE(ctypes.c_bool, ctypes.POINTER(ctypes.c_int), ctypes.POINTER(ctypes.c_int))
-    GetWindowText = ctypes.windll.user32.GetWindowTextW
-    GetWindowTextLength = ctypes.windll.user32.GetWindowTextLengthW
-    IsWindowVisible = ctypes.windll.user32.IsWindowVisible
-    
-    titles = []
-    def foreach_window(hwnd, lParam):
-        if IsWindowVisible(hwnd):
-            length = GetWindowTextLength(hwnd)
-            buff = ctypes.create_unicode_buffer(length + 1)
-            GetWindowText(hwnd, buff, length + 1)
-            titles.append(buff.value)
-        return True
-
-    def appWindow(list, match):
-        for i, s in enumerate(list):
-            if match in s:
-                return i
-        return -1
-
-    EnumWindows(EnumWindowsProc(foreach_window), 0)
-    return titles[appWindow(titles, 'QAD')]
+appIsOpenCheck()
 
 # Detect screen resolution
+screenResolution = pyautogui.size()
 
 # Delay start
 time.sleep(5)
@@ -41,7 +20,7 @@ pyautogui.FAILSAFE = True
 
 # Detect if program is open
 while True:
-#    window = pyautogui.getWindow('testdb: WATSUS Watson US [USD] > 370 Watson and Chalin US - QAD Enterprise Applications')
+    #    window = pyautogui.getWindow('testdb: WATSUS Watson US [USD] > 370 Watson and Chalin US - QAD Enterprise Applications')
     window = pyautogui.getWindow(appIsOpenCheck())
     if window:
         window.set_foreground()
