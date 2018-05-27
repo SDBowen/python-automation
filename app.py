@@ -2,18 +2,17 @@
 import pyautogui
 import time
 from appIsOpenCheck import appIsOpenCheck
-from clearAppScreen import clearAppScreen
-from menuSelect import menuSelect
-from reportOutputCheck import reportOutputCheck
 from lib import itemCosting
+from lib import clearAppScreen
 
 # Input from user
-menu = '13.12.1'
 site = '370'
 costSet = 'CURRENT'
 item = "TEST"
 freezeUnfreeze = 'u'
 freightPercent = '2.5'
+overheadPercent = '80'
+changeStatusTo = 'AC1'
 
 # Detect screen resolution
 screenResolution = pyautogui.size()
@@ -29,14 +28,17 @@ while True:
 
 # Maximize app
 pyautogui.hotkey('alt', ' ', 'x')
-time.sleep(2)
+time.sleep(1)
 
-clearAppScreen()
-
-menuSelect(menu)
-    
+clearAppScreen.clearAppScreen()
 itemCosting.freezeAndUnfreeze(site, costSet, item, freezeUnfreeze)
-itemCosting.costRollUp(site, costSet, item)
-elementCostCalc(item, costSet, freightPercent)
 
-reportOutputCheck()
+itemCosting.costRollUp(site, costSet, item)
+
+itemCosting.elementCostCalc(item, costSet, freightPercent)
+
+itemCosting.overheadCostUpdate(item, costSet, overheadPercent)
+
+itemCosting.productStructureCostRollUp(site, costSet, item)
+
+itemCosting.itemDataMaint(item, changeStatusTo)
