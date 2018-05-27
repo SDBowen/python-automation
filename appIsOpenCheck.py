@@ -26,3 +26,4 @@ def appIsOpenCheck():
 
     EnumWindows(EnumWindowsProc(foreach_window), 0)
     return titles[appWindow(titles, 'QAD')]
+
