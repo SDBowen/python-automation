@@ -13,6 +13,7 @@ site = '370'
 costSet = 'CURRENT'
 item = "TEST"
 freezeUnfreeze = 'u'
+freightPercent = '2.5'
 
 # Detect screen resolution
 screenResolution = pyautogui.size()
@@ -35,5 +36,7 @@ clearAppScreen()
 menuSelect(menu)
     
 itemCosting.freezeAndUnfreeze(site, costSet, item, freezeUnfreeze)
+itemCosting.costRollUp(site, costSet, item)
+elementCostCalc(item, costSet, freightPercent)
 
 reportOutputCheck()
