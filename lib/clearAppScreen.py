@@ -5,5 +5,5 @@ def clearAppScreen():
     pyautogui.hotkey('alt', 'w', 'l')
     pyautogui.press('esc')
     # Check for empty screen background
-    while pyautogui.pixelMatchesColor(308, 84, (186, 188, 189)) == False:
+    while pyautogui.pixelMatchesColor(1500, 200, (194, 196, 197)) == False:
         print('#Check for empty screen: RGB not matched')
