@@ -7,8 +7,8 @@ from lib import clearAppScreen
 
 # Input from user
 site = '370'
-costSet = 'CURRENT'
-item = "TEST"
+costSet = 'standard'
+item = "test"
 freezeUnfreeze = 'u'
 freightPercent = '2.5'
 overheadPercent = '80'
@@ -42,3 +42,6 @@ itemCosting.overheadCostUpdate(item, costSet, overheadPercent)
 itemCosting.productStructureCostRollUp(site, costSet, item)
 
 itemCosting.itemDataMaint(item, changeStatusTo)
+
+if costSet == 'standard':
+    itemCosting.freezeAndUnfreeze(site, costSet, item, 'f')
