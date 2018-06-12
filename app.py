@@ -7,8 +7,8 @@ from lib import clearAppScreen
 
 # Input from user
 site = '370'
-costSet = 'standard'
-item = "test"
+costSet = 'current'
+item = "hk1030ny"
 freezeUnfreeze = 'u'
 freightPercent = '2.5'
 overheadPercent = '80'

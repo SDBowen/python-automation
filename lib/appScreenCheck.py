@@ -1,7 +1,7 @@
 import pyautogui
 
 def appScreenCheck(screenType):
-    type_dict = {'report': 'images/report.png', 'freezeUnfreeze': 'images/freeze.png', 'routing': 'images/routing.png', 'element': 'images/itemElement.png', 'overhead': 'images/itemOverhead.png', 'prodStruct': 'images/prodStruct.png', 'dataMaint': 'images/itemMaint.png'}
+    type_dict = {'report': 'images/report.png', 'freezeUnfreeze': 'images/freeze.png', 'routing': 'images/routing.png', 'element': 'images/itemElement.png', 'overhead': 'images/itemOverhead.png', 'prodStruct': 'images/prodStruct.png', 'dataMaint': 'images/itemMaint.png', 'supplierBrowse': 'images/supplierBrowse.png', 'supplierModify': 'images/supplierModify.png'}
     img = type_dict[screenType]
     # Report completion image
     runComplete = pyautogui.locateOnScreen(img, region=(0, 0 , 1920, 150), grayscale=True)

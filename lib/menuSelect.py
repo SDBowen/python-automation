@@ -6,6 +6,8 @@ def menuSelect(menu):
     # Enter menu input from user
     pyautogui.typewrite(menu, .15)
     pyautogui.press('enter')
+    if menu == '28.20.1.2':
+        pyautogui.press('space')
     pyautogui.press('esc')
     # Check for screen change
     while pyautogui.pixelMatchesColor(320, 160, (255, 255, 255)) == False:
