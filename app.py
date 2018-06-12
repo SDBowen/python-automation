@@ -8,11 +8,13 @@ from lib import clearAppScreen
 # Input from user
 site = '370'
 costSet = 'current'
-item = "hk1030ny"
+item = "TEST"
 freezeUnfreeze = 'u'
 freightPercent = '2.5'
 overheadPercent = '80'
 changeStatusTo = 'AC1'
+purchasedPart = False
+purchasePrice = 0
 
 # Detect screen resolution
 screenResolution = pyautogui.size()

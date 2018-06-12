@@ -143,3 +143,16 @@ def itemDataMaint(item, status):
     pyautogui.press('enter')
     print('costRollUp Completed')
     clearAppScreen()
+
+def itemCostMaint(item, price, costSet):
+    menuSelect('1.4.18')
+    appScreenCheck('itemSiteCostMaint')
+    pyautogui.typewrite(item)
+    pyautogui.press('enter')
+    if costSet == 'standard':
+        pyautogui.press('space')
+        pyautogui.press('tab')
+        pyautogui.hotkey('shift','tab')
+        pyautogui.typewrite(price)
+        
+    
