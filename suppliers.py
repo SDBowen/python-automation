@@ -23,7 +23,7 @@ time.sleep(1)
 clearAppScreen.clearAppScreen()
 
 def makeSupplierInactive():
-    supplierList = [500253,509665,500118,502534,504287]
+    supplierList = [504408,509666,500253,509665,500118]
 
     menuSelect.menuSelect('28.20.1.2')
     appScreenCheck.appScreenCheck('supplierBrowse')  
@@ -36,8 +36,9 @@ def makeSupplierInactive():
     for n in supplierList:
         pyautogui.typewrite(str(n))
         pyautogui.press('enter')
-        while (pyautogui.pixelMatchesColor(950, 450, (255, 255, 255)) == False) and (pyautogui.pixelMatchesColor(900, 290, (65, 137, 238)) == False):
+        while (pyautogui.pixelMatchesColor(950, 450, (255, 255, 255)) == False) and (pyautogui.pixelMatchesColor(275, 291, (65, 137, 238)) == False):
             print('#Check for supplier list: RGB not matched')
+        time.sleep(1)
         pyautogui.press('enter')
         appScreenCheck.appScreenCheck('supplierModify')
         appScreenCheck.appScreenCheck('supplierModify2')
