@@ -16,7 +16,7 @@ while True:
         window.set_foreground()
         break
 
-# Maximize appW
+# Maximize app
 pyautogui.hotkey('alt', ' ', 'x')
 time.sleep(1)
 
