@@ -82,26 +82,39 @@ def makeSupplierInactive():
     pyautogui.typewrite('CRF') # CRF EMP N-IC
 
     # Tab selection function
-
+    x, y = pyautogui.locateCenterOnScreen('images/businessRelationTab.png', grayscale='true')
+    pyautogui.click(x, y)
+    pyautogui.press('right')
+    # accounting
+    # payment
     pyautogui.press('tab')
-    for n in supplierList:
-        pyautogui.typewrite(str(n))
-        pyautogui.press('enter')
-        while (pyautogui.pixelMatchesColor(950, 450, (255, 255, 255)) == False) and (pyautogui.pixelMatchesColor(275, 291, (65, 137, 238)) == False):
-            print('#Check for supplier list: RGB not matched')
-        time.sleep(1)
-        pyautogui.press('enter')
-        appScreenCheck.appScreenCheck('supplierModify')
-        appScreenCheck.appScreenCheck('supplierModify2')
-        pyautogui.press('space')
-        for _ in range(4):
-            pyautogui.press('tab')
-        for _ in range(2):
-            pyautogui.press('space')
-        appScreenCheck.appScreenCheck('supplierBrowse')
-        for _ in range(5):
-            pyautogui.press('tab')
-        print(n)
+    pyautogui.typewrite(supplierTerms)
+    pyautogui.press('tab')    
+    pyautogui.typewrite(supplierInvoiceStatus) #S-NOPO, S-POINV
+    # banking
+    pyautogui.click(x=1600, y=650, button='right')
+    for _ in range(4):
+        pyautogui.press('up')
+    pyautogui.press('space')
+    pyautogui.press('tab')    
+    pyautogui.typewrite('XX')
+    for _ in range(2):
+        pyautogui.press('tab') 
+    pyautogui.typewrite('07192328417519932218765317760')
+    pyautogui.press('tab')
+    pyautogui.hotkey('alt', ' ')
+    pyautogui.press('x')    
+    time.sleep(1) # Screen check instead?
+    # need payment selection logic
+
+    # default
+    # tax info
+    for _ in range(3):
+        pyautogui.press('tab')
+    pyautogui.typewrite(supplierTaxId)
+    for _ in range(11):
+        pyautogui.press('tab')
+    pyautogui.press('space')
     print('Done')
 
 makeSupplierInactive()
