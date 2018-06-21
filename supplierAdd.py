@@ -35,10 +35,11 @@ supplierEmail = 'test@test.com'
 supplierTerms = 'N60'
 supplierInvoiceStatus = 'S-NOPO'
 supplierTaxId = '11111-11111'
+supplierPaymentType = 'US-PM-CHK-AP'
 
 
 
-def createNewSupplier(cert, supplierName, supplierSearchName, supplierAddressStreet, supplierAddressZip, supplierAddressCity, supplierAddressState, supplierPhone, supplierFax, supplierEmail, supplierTerms, supplierInvoiceStatus, supplierTaxId):
+def createNewSupplier(cert, supplierName, supplierSearchName, supplierAddressStreet, supplierAddressZip, supplierAddressCity, supplierAddressState, supplierPhone, supplierFax, supplierEmail, supplierTerms, supplierInvoiceStatus, supplierTaxId, supplierPaymentType):
     
     menuSelect.menuSelect('28.20.1.1')
     appScreenCheck.appScreenCheck('supplierCreate') 
@@ -52,11 +53,14 @@ def createNewSupplier(cert, supplierName, supplierSearchName, supplierAddressStr
     pyautogui.press(cert)
     for _ in range(2):
         pyautogui.press('tab')
-    pyautogui.press('space') 
+    pyautogui.press('space')
+    pyautogui.hotkey('alt', ' ')
+    pyautogui.press('x')    
     appScreenCheck.appScreenCheck('businessRelationCreate')
     # Maximize app
-    pyautogui.hotkey('alt', ' ', 'x')
-    appScreenCheck.appScreenCheck('businessRelationAddress')
+    pyautogui.hotkey('alt', ' ')
+    pyautogui.press('x')    
+    appScreenCheck.appScreenCheck('businessRelationAddress') # Can open on wrong screen
     pyautogui.hotkey('ctrl', 'v')
     pyautogui.press('tab')
     pyautogui.typewrite(supplierName)
@@ -104,18 +108,17 @@ def createNewSupplier(cert, supplierName, supplierSearchName, supplierAddressStr
 
     # Tab selection function
     appScreenCheck.appScreenCheck('businessRelationTab')
-    x, y = pyautogui.locateCenterOnScreen('images/businessRelationTab.PNG')
-    pyautogui.click(x, (y + 55))
+    pyautogui.click(370, 250)
     for _ in range(2):
         pyautogui.press('right')
     # payment
     pyautogui.press('tab')
     pyautogui.typewrite(supplierTerms)
-    pyautogui.press('tab')    
+    for _ in range(2):
+        pyautogui.press('tab')    
     pyautogui.typewrite(supplierInvoiceStatus) #S-NOPO, S-POINV
     # banking
-    x, y = pyautogui.locateCenterOnScreen('images/businessRelationTab.PNG')
-    pyautogui.click(x, (y + 55))
+    pyautogui.click(370, 250)
     for _ in range(3):
         pyautogui.press('right')
     pyautogui.click(x=1600, y=650, button='right')
@@ -128,15 +131,25 @@ def createNewSupplier(cert, supplierName, supplierSearchName, supplierAddressStr
         pyautogui.press('tab') 
     pyautogui.typewrite('07192328417519932218765317760')
     pyautogui.press('tab')
+    # Maximize
     pyautogui.hotkey('alt', ' ')
     pyautogui.press('x')    
-    time.sleep(1) # Screen check instead?
-    # need payment selection logic
 
-    # default
+    appScreenCheck.appScreenCheck('bankPayment')
+    # need payment selection logic
+    pyautogui.click(75, 100)
+    pyautogui.press('a')    
+    pyautogui.press('p')    
+    pyautogui.press('tab')    
+    pyautogui.press('e')    
+    pyautogui.press('tab')    
+    pyautogui.typewrite(supplierPaymentType)
+    pyautogui.press('enter')    
+    time.sleep(3)
+    pyautogui.press('enter')    
+
     # tax info
-    x, y = pyautogui.locateCenterOnScreen('images/businessRelationTab.PNG')
-    pyautogui.click(x, (y + 55))
+    pyautogui.click(370, 250)
     for _ in range(5):
         pyautogui.press('right')
     for _ in range(3):
@@ -147,4 +160,4 @@ def createNewSupplier(cert, supplierName, supplierSearchName, supplierAddressStr
     #pyautogui.press('space')
     print('Done')
 
-createNewSupplier(cert, supplierName, supplierSearchName, supplierAddressStreet, supplierAddressZip, supplierAddressCity, supplierAddressState, supplierPhone, supplierFax, supplierEmail, supplierTerms, supplierInvoiceStatus, supplierTaxId)
+createNewSupplier(cert, supplierName, supplierSearchName, supplierAddressStreet, supplierAddressZip, supplierAddressCity, supplierAddressState, supplierPhone, supplierFax, supplierEmail, supplierTerms, supplierInvoiceStatus, supplierTaxId, supplierPaymentType)
