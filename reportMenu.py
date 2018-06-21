@@ -73,3 +73,18 @@ for _ in range(6):
     pyautogui.press('up')
 pyautogui.press('space')
 
+time.sleep(2) # screen check
+pyautogui.press('f12')
+time.sleep(2) # screen check
+pyautogui.typewrite('filename')
+for _ in range(10):
+    pyautogui.press('tab')
+pyautogui.press('space')
+pyautogui.typewrite('C:\\Users\\sbowen\\Desktop\\Cost Dashboard')
+pyautogui.press('enter')
+for _ in range(14):
+    pyautogui.press('tab')
+pyautogui.press('space')
+
+
+
