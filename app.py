@@ -29,7 +29,8 @@ while True:
         break
 
 # Maximize app
-pyautogui.hotkey('alt', ' ', 'x')
+pyautogui.hotkey('alt', ' ')
+pyautogui.press('x')  
 time.sleep(1)
 
 clearAppScreen.clearAppScreen()
